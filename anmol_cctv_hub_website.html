@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<meta name="description" content="ANMOL CCTV HUB, Lohian Khas — CCTV cameras, security systems and installation services.">
+<title>ANMOL CCTV HUB | Lohian Khas</title>
+<style>
+:root {
+  --site-primary: #102b46;
+  --site-secondary: #e6a83b;
+  --site-background: #07111f;
+  --site-on-primary: #ffffff;
+  --site-on-secondary: #161616;
+  --site-on-background: #f5f7fb;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  --surface: light-dark(#ffffff, #101c2b);
+  --surface-soft: light-dark(#f3f6fa, #142235);
+  --text: light-dark(#172638, #f5f7fb);
+  --muted: light-dark(#5b6b7d, #a9b8c9);
+  --line: light-dark(#dce4ed, #26384c);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; color-scheme: light dark; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+#app { min-height: 100vh; width: 100%; border-radius: 0; background: var(--site-background); overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+.container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+.topbar { background: var(--site-primary); color: var(--site-on-primary); font-size: 13px; padding: 10px 0; }
+.topbar-inner { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+header { background: var(--surface); color: var(--text); border-bottom: 1px solid var(--line); position: sticky; top:0; z-index:10; }
+.nav { min-height: 78px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.brand { display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.3px; }
+.brand-mark { width:44px; height:44px; display:grid; place-items:center; border-radius: calc(14px * var(--site-radius-scale)); background:var(--site-secondary); color:var(--site-on-secondary); font-size:20px; }
+.brand small { display:block; color:var(--muted); font-weight:700; font-size:10px; letter-spacing:2px; margin-top:3px; }
+.navlinks { display:flex; align-items:center; gap:24px; color:var(--muted); font-size:14px; font-weight:700; }
+.navlinks a:hover { color:var(--site-secondary); }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; cursor:pointer; padding:13px 18px; border-radius: calc(12px * var(--site-radius-scale)); font-weight:800; transition:transform .2s, opacity .2s; }
+.btn:hover { transform:translateY(-2px); }
+.btn-primary { background:var(--site-secondary); color:var(--site-on-secondary); }
+.btn-dark { background:var(--site-primary); color:var(--site-on-primary); }
+.btn-outline { border:1px solid var(--line); color:var(--text); background:transparent; }
+.hero { position:relative; isolation:isolate; padding:78px 0 82px; background:linear-gradient(115deg, #07111f 0%, #102b46 58%, #1a3850 100%); }
+.hero:before { content:""; position:absolute; z-index:-1; width:470px; height:470px; right:-80px; top:-130px; border-radius:50%; border:1px solid rgba(230,168,59,.22); box-shadow:0 0 0 50px rgba(230,168,59,.04),0 0 0 100px rgba(230,168,59,.025); opacity:var(--site-decoration-opacity); }
+.hero-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; }
+.eyebrow { color:var(--site-secondary); font-weight:900; text-transform:uppercase; letter-spacing:2.2px; font-size:12px; }
+h1 { font-family:var(--site-font-heading); font-size:clamp(40px, 5.5vw, 68px); line-height:1.04; letter-spacing:-2px; margin:18px 0; }
+h1 span { color:var(--site-secondary); }
+.hero p { color:#d0d9e4; font-size:17px; line-height:1.75; max-width:560px; }
+.hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+.hero-note { display:flex; gap:10px; align-items:center; margin-top:24px; font-size:13px; color:#c4d0dc; }
+.camera-scene { min-height:350px; border:1px solid rgba(255,255,255,.15); border-radius:24px; background:linear-gradient(145deg, rgba(255,255,255,.1), rgba(255,255,255,.025)); display:grid; place-items:center; position:relative; overflow:hidden; }
+.camera-scene:before { content:""; position:absolute; width:260px; height:260px; border-radius:50%; background:rgba(230,168,59,.1); filter:blur(8px); }
+.camera-svg { width:min(88%, 380px); position:relative; filter:drop-shadow(0 24px 22px rgba(0,0,0,.25)); }
+.floating-tag { position:absolute; bottom:22px; left:22px; background:#fff; color:#152437; padding:12px 15px; border-radius:12px; font-weight:800; font-size:13px; box-shadow:0 10px 25px #0002; }
+.floating-tag span { color:#28764e; margin-right:5px; }
+.stats { background:var(--surface); color:var(--text); border-bottom:1px solid var(--line); }
+.stats-grid { display:grid; grid-template-columns:repeat(3,1fr); }
+.stat { padding:25px 20px; text-align:center; border-right:1px solid var(--line); }
+.stat:last-child { border:0; }
+.stat strong { display:block; font-size:17px; margin-bottom:5px; }
+.stat span { color:var(--muted); font-size:13px; }
+section { padding:76px 0; }
+.section-head { max-width:650px; margin:0 auto 38px; text-align:center; }
+.section-head h2 { font-size:clamp(29px,4vw,42px); letter-spacing:-1px; margin:12px 0; }
+.section-head p { color:var(--muted); line-height:1.7; }
+.cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.card { background:var(--surface); color:var(--text); border:1px solid var(--line); border-radius:calc(18px * var(--site-radius-scale)); padding:25px; }
+.card-icon { width:54px; height:54px; border-radius:15px; display:grid; place-items:center; background:color-mix(in srgb, var(--site-secondary) 18%, transparent); font-size:26px; margin-bottom:20px; }
+.card h3 { margin:0 0 10px; font-size:19px; }
+.card p { margin:0; color:var(--muted); line-height:1.7; font-size:14px; }
+.products { background:var(--surface-soft); color:var(--text); }
+.product-card { padding:0; overflow:hidden; }
+.product-visual { height:160px; display:grid; place-items:center; background:linear-gradient(140deg,#102b46,#1d415b); color:#fff; font-size:60px; }
+.product-body { padding:22px; }
+.product-body h3 { margin:0 0 8px; }
+.product-body p { margin-bottom:18px; }
+.pill { display:inline-block; border-radius:100px; background:color-mix(in srgb, var(--site-secondary) 18%, transparent); color:light-dark(#79520c,#ffd78b); font-size:11px; padding:6px 10px; font-weight:900; margin-bottom:12px; }
+.about-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:48px; align-items:center; }
+.about-panel { border-radius:24px; padding:32px; background:var(--site-primary); color:#fff; }
+.about-panel .big { color:var(--site-secondary); font-size:44px; font-weight:950; }
+.about-panel p { color:#d0d9e4; line-height:1.7; }
+.checks { list-style:none; padding:0; display:grid; gap:13px; color:var(--muted); }
+.checks li:before { content:"✓"; color:#299966; font-weight:900; margin-right:10px; }
+.contact { background:var(--surface-soft); color:var(--text); }
+.contact-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:28px; align-items:start; }
+.contact-info { background:var(--site-primary); color:#fff; padding:30px; border-radius:20px; }
+.contact-info h3 { font-size:24px; margin-top:0; }
+.contact-line { display:flex; gap:13px; align-items:flex-start; padding:15px 0; border-bottom:1px solid #ffffff24; }
+.contact-line:last-child { border-bottom:0; }
+.contact-line b { display:block; margin-bottom:4px; }
+.contact-line span { color:#d0d9e4; font-size:14px; }
+.form { background:var(--surface); padding:28px; border:1px solid var(--line); border-radius:20px; }
+.form label { display:block; font-size:13px; font-weight:800; margin-bottom:7px; }
+.form input, .form textarea { width:100%; border:1px solid var(--line); background:var(--surface-soft); color:var(--text); border-radius:10px; padding:13px; margin-bottom:16px; outline:none; }
+.form input:focus, .form textarea:focus { border-color:var(--site-secondary); }
+.form textarea { min-height:105px; resize:vertical; }
+footer { background:#050c15; color:#d7e0e9; padding:28px 0; font-size:13px; }
+.footer-inner { display:flex; justify-content:space-between; gap:15px; flex-wrap:wrap; }
+.whatsapp { position:fixed; z-index:20; right:20px; bottom:20px; background:#20b96b; color:#fff; border-radius:100px; padding:14px 18px; box-shadow:0 10px 28px #0004; font-weight:900; }
+@media (max-width:800px) {
+ .navlinks { display:none; }
+ .hero { padding:56px 0; }
+ .hero-grid, .about-grid, .contact-grid { grid-template-columns:1fr; gap:30px; }
+ .camera-scene { min-height:280px; }
+ .cards { grid-template-columns:1fr; }
+ .stats-grid { grid-template-columns:1fr; }
+ .stat { border-right:0; border-bottom:1px solid var(--line); }
+ section { padding:58px 0; }
+ h1 { letter-spacing:-1px; }
+}
+@media (min-width:801px) and (max-width:1000px) { .cards { grid-template-columns:repeat(2,1fr); } }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="topbar"><div class="container topbar-inner"><span>📍 Lohian Khas, Punjab</span><span>Security solutions for your home & business</span></div></div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="ANMOL CCTV HUB home"><span class="brand-mark">◉</span><span>ANMOL CCTV HUB<small>SECURITY • SERVICE • TRUST</small></span></a>
+      <nav class="navlinks" aria-label="Main navigation"><a href="#services">Services</a><a href="#products">Products</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+      <a class="btn btn-primary" href="tel:8360079629">☎ Call Now</a>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Your local security partner</div>
+          <h1>Keep What Matters <span>Safe.</span></h1>
+          <p>Smart CCTV and security solutions for homes, shops and businesses. Get help choosing the right cameras, installation and setup from ANMOL CCTV HUB, Lohian Khas.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#contact">Get a Free Enquiry ↗</a><a class="btn btn-outline" style="color:#fff;border-color:#ffffff55" href="#services">Explore Services</a></div>
+          <div class="hero-note"><span>✓</span> CCTV guidance & installation enquiries <span>•</span> Friendly local service</div>
+        </div>
+        <div class="camera-scene" aria-label="Illustration of a CCTV security camera">
+          <svg class="camera-svg" viewBox="0 0 440 300" role="img" aria-label="CCTV camera illustration">
+            <defs><linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fbff"/><stop offset="1" stop-color="#a9bacb"/></linearGradient><linearGradient id="lens" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#345f83"/><stop offset="1" stop-color="#07111f"/></linearGradient></defs>
+            <path d="M110 62 L110 100 L146 100 L146 77" fill="none" stroke="#c8d5e2" stroke-width="16" stroke-linecap="round"/>
+            <path d="M98 60 Q98 42 116 42 H151 Q168 42 168 60 V74 H98Z" fill="#e9eef4"/>
+            <path d="M130 101 L130 135 Q130 151 148 151 H180" fill="none" stroke="#9eafbf" stroke-width="16" stroke-linecap="round"/>
+            <path d="M161 107 L285 107 Q315 107 329 133 L345 164 Q351 180 334 187 L299 202 L164 173 Q147 169 147 151 V128 Q147 107 161 107Z" fill="url(#body)"/>
+            <path d="M290 109 L328 127 L350 164 Q358 181 340 190 L304 204 L284 181 L306 160Z" fill="#d6e0ea"/>
+            <ellipse cx="335" cy="165" rx="31" ry="39" transform="rotate(-25 335 165)" fill="#53687b"/>
+            <ellipse cx="339" cy="164" rx="22" ry="30" transform="rotate(-25 339 164)" fill="url(#lens)"/>
+            <ellipse cx="345" cy="157" rx="8" ry="12" transform="rotate(-25 345 157)" fill="#91c4e9" opacity=".8"/>
+            <path d="M171 119 L263 119 Q278 119 286 132 L300 154 L185 154 Q170 154 170 140Z" fill="#ffffff" opacity=".65"/>
+            <circle cx="188" cy="181" r="5" fill="#e6a83b"/><circle cx="207" cy="186" r="5" fill="#e6a83b"/><circle cx="226" cy="191" r="5" fill="#e6a83b"/>
+            <path d="M170 216 L270 239" stroke="#e6a83b" stroke-width="2" stroke-dasharray="5 7" opacity=".8"/>
+          </svg>
+          <div class="floating-tag"><span>●</span> Security starts here</div>
+        </div>
+      </div>
+    </section>
+    <div class="stats"><div class="container stats-grid"><div class="stat"><strong>🏠 Home Security</strong><span>Help protect your family and property</span></div><div class="stat"><strong>🏪 Shop & Business</strong><span>Keep an eye on your workplace</span></div><div class="stat"><strong>🛠️ Installation Support</strong><span>Setup and service enquiries</span></div></div></div>
+    <section id="services">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">What we do</div><h2>Security made simple</h2><p>Tell us what you need. We can help you explore suitable CCTV options for your space and budget.</p></div>
+        <div class="cards">
+          <article class="card"><div class="card-icon">📹</div><h3>CCTV Camera Systems</h3><p>Explore camera options for entrances, rooms, counters, parking areas and outdoor spaces.</p></article>
+          <article class="card"><div class="card-icon">🔧</div><h3>Installation & Setup</h3><p>Ask about camera placement, recorder setup, viewing on your phone and basic system configuration.</p></article>
+          <article class="card"><div class="card-icon">📱</div><h3>Mobile Viewing Help</h3><p>Get guidance on checking your compatible CCTV system from a mobile phone, where supported.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="products" id="products">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">Popular categories</div><h2>Find the right setup</h2><p>These are example categories. Contact the shop for current availability, compatibility and pricing.</p></div>
+        <div class="cards">
+          <article class="card product-card"><div class="product-visual">📷</div><div class="product-body"><span class="pill">INDOOR</span><h3>Indoor CCTV Cameras</h3><p>For rooms, offices, counters and indoor monitoring.</p><a class="btn btn-dark ask-product" data-product="Indoor CCTV Cameras" href="#contact">Ask for price</a></div></article>
+          <article class="card product-card"><div class="product-visual">🌦️</div><div class="product-body"><span class="pill">OUTDOOR</span><h3>Outdoor CCTV Cameras</h3><p>Options designed for entrances, gates and outdoor coverage.</p><a class="btn btn-dark ask-product" data-product="Outdoor CCTV Cameras" href="#contact">Ask for price</a></div></article>
+          <article class="card product-card"><div class="product-visual">🖥️</div><div class="product-body"><span class="pill">COMPLETE SETUP</span><h3>DVR / NVR Systems</h3><p>Ask about recording systems, storage and camera compatibility.</p><a class="btn btn-dark ask-product" data-product="DVR / NVR Systems" href="#contact">Ask for price</a></div></article>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-panel"><div class="eyebrow">ANMOL CCTV HUB</div><div class="big">See clearly.<br>Feel secure.</div><p>Your local point of contact for CCTV camera and security system enquiries in Lohian Khas.</p><a class="btn btn-primary" href="tel:8360079629">Call 83600 79629</a></div>
+        <div><div class="eyebrow">Why contact us?</div><h2 style="font-size:clamp(28px,4vw,40px);letter-spacing:-1px">A practical solution for your space</h2><p style="color:var(--muted);line-height:1.8">Every property is different. Share the size of your space and what you want to monitor, and ask about a suitable camera setup before you buy.</p><ul class="checks"><li>Options for homes, shops and offices</li><li>Help with camera placement and coverage</li><li>Ask about installation and phone viewing</li><li>Direct contact with your local shop</li></ul></div>
+      </div>
+    </section>
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">Get in touch</div><h2>Let's secure your space</h2><p>Send your enquiry on WhatsApp. Add the product or service you're interested in and we'll open a ready-to-send message.</p></div>
+        <div class="contact-grid">
+          <div class="contact-info"><h3>Contact the shop</h3><div class="contact-line"><div>📞</div><div><b>Phone / WhatsApp</b><span>8360079629</span></div></div><div class="contact-line"><div>📍</div><div><b>Location</b><span>Lohian Khas, Punjab, India</span></div></div><div class="contact-line"><div>🕒</div><div><b>Shop timings</b><span>Please call to confirm opening hours.</span></div></div></div>
+          <form class="form" id="enquiryForm"><label for="name">Your name</label><input id="name" name="name" placeholder="Enter your name" required><label for="need">What do you need?</label><input id="need" name="need" placeholder="e.g. 4 cameras for my shop" required><label for="message">Extra details (optional)</label><textarea id="message" name="message" placeholder="Tell us about your space or budget"></textarea><button class="btn btn-primary" type="submit">Send enquiry on WhatsApp ↗</button></form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container footer-inner"><span>© <span id="year"></span> ANMOL CCTV HUB. All rights reserved.</span><span>Lohian Khas, Punjab • CCTV & Security Solutions</span></div></footer>
+  <a class="whatsapp" href="https://wa.me/918360079629?text=Hello%20ANMOL%20CCTV%20HUB%2C%20I%20need%20information%20about%20CCTV%20cameras." target="_blank" rel="noopener noreferrer" aria-label="Chat with ANMOL CCTV HUB on WhatsApp">◉ WhatsApp</a>
+</div>
+<script>
+const phone = "918360079629";
+document.getElementById("year").textContent = new Date().getFullYear();
+document.querySelectorAll(".ask-product").forEach(link => link.addEventListener("click", () => {
+  const field = document.getElementById("need");
+  field.value = link.dataset.product;
+}));
+document.getElementById("enquiryForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const need = document.getElementById("need").value.trim();
+  const extra = document.getElementById("message").value.trim();
+  const message = `Hello ANMOL CCTV HUB!%0AName: ${encodeURIComponent(name)}%0AEnquiry: ${encodeURIComponent(need)}%0ADetails: ${encodeURIComponent(extra || "Not provided")}`;
+  window.open(`https://wa.me/${phone}?text=${message}`, "_blank", "noopener,noreferrer");
+});
+</script>
+</body>
+</html>
